@@ -1,0 +1,29 @@
+{% extends 'BlogBundle::layout.html.twig' %}
+
+{% block content %}
+<div class="container">
+    <div class="center-align">
+        {% form_theme search_form 'BlogBundle::fields.html.twig' %}
+        {{ form_start(search_form) }}
+        {{ form_end(search_form) }}
+    </div>
+
+    {% for article in articles %}
+        <div class="col s6 m6">
+                  <div class="card  cyan darken-4">
+                    <div class="card-content white-text">
+                      <span class="card-title">{{ article.name }}</span>
+                      <p>{{ article.content }}</p>
+                    </div>
+                    <div class="card-action">
+                      <a href="{{ path('blog_article', {'id': article.id}) }}">Lire l'article</a>
+                    </div>
+                  </div>
+                </div>
+
+        {% else %}
+            <h2>Il n'y a actuellement aucun article en ligne ...</h2>
+    {% endfor %}
+</div>
+{% endblock %}
+

@@ -1,0 +1,9 @@
+<ul>
+    {% for article in articles %}
+        <li>
+            {% include '@Blog/Article/article.template.html.twig' %}
+        </li>
+    {% else %}
+        <li>No articles found</li>
+    {% endfor %}
+</ul>

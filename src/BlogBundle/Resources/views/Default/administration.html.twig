@@ -1,0 +1,83 @@
+{% extends 'BlogBundle::layout.html.twig' %}
+
+{% block content %}
+    <div class="container">
+        <div class="card blue-grey lighten-5">
+            <div class="card-content black-text">
+                <span class="card-title">Gestion d'articles</span>
+                <p>
+                    <div>
+                        <div>
+                            <h1>Tous les articles</h1>
+                            <ul>
+                                {% for article in articles %}
+                                <li>{{ article.name }} | <a href="{{ path('blog_article_delete',{'id':article.id}) }}">Supprimer</a> </li>
+                                {% else %}
+                                <li>Pas d'articles</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div>
+                            <h1>Ajouter un article</h1>
+                            {% form_theme form_article 'BlogBundle::fields.html.twig' %}
+                            {{ form_start(form_article) }}
+                            {{ form_end(form_article) }}
+                        </div>
+                    </div>
+                </p>
+            </div>            
+        </div>
+
+        <div class="card blue-grey lighten-5">
+            <div class="card-content black-text">
+                <span class="card-title">Gestion de catégories</span>
+                <p>
+                    <div>
+                        <div>
+                            <h1>Toutes les catégories</h1>
+                            <ul>
+                                {% for category in categories %}
+                                    <li>{{ category.name }} | <a href="{{ path('blog_category_delete',{'id':category.id}) }}">Supprimer</a> </li>
+                                {% else %}
+                                    <li>Pas de catégories</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div>
+                            <h1>Ajouter une catégorie</h1>
+                            {% form_theme form_category 'BlogBundle::fields.html.twig' %}
+                            {{ form_start(form_category) }}
+                            {{ form_end(form_category) }}
+                        </div>
+                    </div>
+                </p>
+            </div>            
+        </div>
+
+        <div class="card blue-grey lighten-5">
+            <div class="card-content black-text">
+                <span class="card-title">Gestion de tags</span>
+                <p>
+                    <div>
+                        <div>
+                            <h1>Tous les tags</h1>
+                            <ul>
+                                {% for tag in tags %}
+                                    <li>{{ tag.name }} | <a href="{{ path('blog_tag_delete',{'id':tag.id}) }}">Supprimer</a> </li>
+                                {% else %}
+                                    <li>Pas de tags</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div>
+                            <h1>Ajouter un tag</h1>
+                            {% form_theme form_tag 'BlogBundle::fields.html.twig' %}
+                            {{ form_start(form_tag) }}
+                            {{ form_end(form_tag) }}
+                        </div>
+                    </div>
+                </p>
+            </div>            
+        </div>
+    </div>
+{% endblock %}
